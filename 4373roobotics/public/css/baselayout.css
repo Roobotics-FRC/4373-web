@@ -128,15 +128,12 @@ a:active { color:#B0B0B0; }
     #wrapper {
         padding-left: 175px;
     }
-
     #wrapper.toggled {
         padding-left: 0;
     }
-
     #sidebar-wrapper {
         width: 175px;
     }
-
     #wrapper.toggled #sidebar-wrapper {
         width: 0;
     }

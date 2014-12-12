@@ -18,33 +18,6 @@
 	<title>Team 4373</title>
 </head>
 <body>
-	<!-- <div class="container">
-		<div class="row">
-			<div class="container-fluid topbar-nav">
-				<a class="navbar-brand" href="#">FRC Team 4373</a>
-				<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				</ul>
-			</div>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-3 col-md-2 sidebar" id="main_sidebar">
-				          <ul class="nav nav-sidebar">
-				            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-				            <li><a href="#">About Our Bot</a></li>
-				            <li><a href="#">The Team</a></li>
-				            <li><a href="#">Contact Us</a></li>
-				          </ul>
-				    </div>
-				</div>
-			</div>
-			<div id="main-content-pane">
-				<p>test2</p>
-				@yield('content')
-			</div>
-	</div> -->
 	<!-- Top menu bar -->
 		<div class="container-fluid" id="navbar-top">
 			<a class="navbar-brand" href="/">FRC Team 4373</a>
@@ -82,7 +55,7 @@
 		<!-- / Collapsible side navigation bar -->
 
 		<!-- Main page content -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper" style="top: 50px;">
 			<div id="main-page-content">
 				@yield('content')
 			</div>
