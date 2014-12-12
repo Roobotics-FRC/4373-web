@@ -13,7 +13,21 @@
 
 App::before(function($request)
 {
-	//
+	// ------------------------------------------------------------------------------------------------
+	// Some secrutity stuff, don't delete!
+	// With <3 from henry :P
+	// Note that none of these are a substitute for proper security practices, just a fallback if the worst should happen
+	// ------------------------------------------------------------------------------------------------
+	header('X-Frame-Options: deny'); // Anti clickjacking
+	header('X-XSS-Protection: 1; mode=block'); // Anti cross site scripting (XSS)
+	header('X-Content-Type-Options: nosniff'); // Reduce exposure to drive-by dl attacks
+	// header('Content-Security-Policy: default-src \'self\''); // Reduce risk of XSS, clickjacking, and other stuff
+	// Don't cache stuff (we'll be updating the page frequently)
+	header('Cache-Control: nocache, no-store, max-age=0, must-revalidate');
+	header('Pragma: no-cache');
+	header('Expires: Fri, 01 Jan 1990 00:00:00 GMT');
+	// // Archer :D
+	header('X-Archer: DANGER ZONE');
 });
 
 
