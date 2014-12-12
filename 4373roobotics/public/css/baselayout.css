@@ -91,7 +91,8 @@ a:active { color:#B0B0B0; }
     top: 0px;
     width: 175px;
     margin: 0;
-    padding: 10px;
+    padding-top: 25px;
+    padding-left: 0px;
     list-style: none;
 }
 
