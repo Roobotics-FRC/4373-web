@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('content')
-<h1>Only testing ;)</h1>
-<img src="{{ asset('images/chip_being_stupid.jpg') }}" style="height:200px;">
+<p>hello world</p>
+<img src="{{ asset('images/header.jpeg') }}" style="width:100%;padding:0;">
 @stop
 
 @stop

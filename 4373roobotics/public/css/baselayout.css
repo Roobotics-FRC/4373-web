@@ -9,6 +9,10 @@
 */
 
 
+body {
+	background-color: #fff;
+}
+
 /*
 * Top navbar
 */
@@ -68,11 +72,13 @@ a:active { color:#B0B0B0; }
 }
 
 #page-content-wrapper {
+	top: 50px;
     width: 100%;
 }
 
 #wrapper.toggled #page-content-wrapper {
-    position: absolute;
+    /*position: absolute;*/
+    top: 50px;
     margin-right: -175px;
 }
 
@@ -140,15 +146,16 @@ a:active { color:#B0B0B0; }
 
     #page-content-wrapper {
     	
-        padding: 20px;
+        /*padding: 20px;*/
     }
 
     #wrapper.toggled #page-content-wrapper {
+    	top: 50px;
         position: relative;
         margin-right: 0;
     }
 }
 
 #main-page-content {
-	
+
 }
