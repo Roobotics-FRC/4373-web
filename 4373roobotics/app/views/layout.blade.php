@@ -55,7 +55,7 @@
 		<!-- / Collapsible side navigation bar -->
 
 		<!-- Main page content -->
-		<div id="page-content-wrapper" style="top: 50px;">
+		<div id="page-content-wrapper" >
 			<div id="main-page-content">
 				@yield('content')
 			</div>

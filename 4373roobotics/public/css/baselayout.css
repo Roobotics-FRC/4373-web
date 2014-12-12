@@ -48,7 +48,7 @@ a:active { color:#B0B0B0; }
 }
 
 #sidebar-wrapper {
-	top: 50px;
+	/*top: 50px;*/
     z-index: 999; /* Always on top */
     position: fixed;
     left: 175px;
