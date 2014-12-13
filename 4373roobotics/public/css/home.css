@@ -1,0 +1,17 @@
+#background {
+	position: fixed;
+	background-image: url('/images/header2.jpg');
+	height:100%;
+	width:100%;
+	background-size: 100% auto;
+}
+
+.about {
+	position: relative;
+	padding: 5%;
+	background-color: #fff;
+	top: 70px;
+	width: 100%;
+	right: 0;
+	height: 400px;
+}
