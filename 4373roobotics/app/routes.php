@@ -19,3 +19,6 @@ Route::get('/', function()
 Route::get('/secret/admin', function() {
 	return Redirect::to('http://akk.li/pics/anne.jpg'); // For the skids :)
 });
+Route::get('/credits', function() {
+	return View::make('credits');
+});

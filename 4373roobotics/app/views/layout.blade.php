@@ -64,5 +64,6 @@
 	</div>
 	<!-- Sidebar hide/show jQuery code -->
 	<script type="text/javascript" src=" {{ asset('js/sidebar.js') }} "></script>
+	<!-- See website credits at {{ asset('credits') }} -->
 </body>
 </html>
