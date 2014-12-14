@@ -56,7 +56,7 @@
                     <a href="/">Get in Touch</a>
                 </li>
                 <li>
-                    <a href="/">Media Gallary</a>
+                    <a href="/media/gallery">Media Gallary</a>
                 </li>
             </ul>
         </div>
