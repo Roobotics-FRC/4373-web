@@ -23,13 +23,21 @@
 			<a class="navbar-brand" href="/">FRC Team 4373</a>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="/">Forums</a>
+					@if (Sentry::check())
+						<a href="/user/home/">{{{ Sentry::getUser()->first_name . ' ' . Sentry::getUser()->last_name }}}</a>
+					@else
+						<a href="/user/signup/">Request Account</a>
+					@endif
+				</li>
+				<li>
+					@if (Sentry::check())
+						<a href="/user/logout/">Logout</a>
+					@else
+						<a href="/user/login/">Login</a>
+					@endif
 				</li>
 				<li>
 					<a href="/">Schedule</a>
-				</li>
-				<li>
-					<a href="/">IRC</a>
 				</li>
 			</ul>
 		</div>
