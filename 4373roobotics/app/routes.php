@@ -28,5 +28,5 @@ Route::post('/user/login', function() {
 });
 
 Route::get('/user/login', function() {
-	return View::make('login')
+	return View::make('login');
 });
