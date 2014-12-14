@@ -20,13 +20,13 @@
 
 <!-- <img src="{{ asset('images/header2.jpg') }}" style="width:100%;padding:0px;pading-left:0px;position:fixed;"> -->
 </div>
-@foreach (Image::orderBy('id', 'DESC')->get() as $image)
+@foreach (Image::all() as $image)
 <div class="about">
 <a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" id="media-well" /></a>
 <hr>
 <p>
 <a href="/image/download/&quot;{{{ $image->id }}}&quot;"><h4>Download {{{ explode(".", $image->name)[0] }}}</h4></a>
-<h5><i>Submitted by {{{ $image->user()->first_name . ' ' . $image->user()->first_name }}}</i></h5>
+<h5><i>Submitted by {{{ $image->user->first_name . ' ' . $image->user->last_name }}}</i></h5>
 &nbsp;&nbsp;&nbsp;&nbsp;{{{ $image->description }}}
 </p>
 </div>
