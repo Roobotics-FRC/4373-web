@@ -25,6 +25,9 @@ Route::get('/credits', function() {
 Route::get('/media/gallery', function() {
 	return View::make('mediagallery');
 });
+Route::get('/notfound', function() {
+	return View::make('notfound');
+});
 Route::post('/account/{id}/edit', array('as'=>'editaccount', 'before'=>'auth | csrf', 'uses'=>'UserController@updateName'));
 Route::post('/account/{id}/changepassword', array('as'=>'changepassword', 'before'=>'auth | csrf', 'uses'=>'UserController@changePassword'));
 Route::get('/user/settings', array('as'=>'showedit', 'before'=>'auth', 'uses'=>'UserController@settings'));
