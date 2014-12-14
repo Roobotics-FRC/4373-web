@@ -22,3 +22,11 @@ Route::get('/secret/admin', function() {
 Route::get('/credits', function() {
 	return View::make('credits');
 });
+
+Route::post('/user/login', function() {
+	return "not implemented";
+});
+
+Route::get('/user/login', function() {
+	return View::make('login')
+});
