@@ -30,7 +30,7 @@
 		<p>
 			{{{ $errors->first('oldpassword') }}}
 			{{{ $errors->first('newpassword') }}}
-			{{{ $errors->first('confirmnewpassword') }}}
+			{{{ $errors->first('newpassword_confirmation') }}}
 		</p>
 		<p>
 			{{ Form::label('oldpassword', 'Current Password: ') }}

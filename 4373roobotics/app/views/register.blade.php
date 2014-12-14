@@ -26,7 +26,7 @@
 			{{{ $errors->first('password') }}}
 			{{{ $errors->first('first_name') }}}
 			{{{ $errors->first('last_name') }}}
-			{{{ $errors->first('admin') }}}
+			{{{ $errors->first('password_confirmation') }}}
 			{{{ $errors->first('incorrect') }}}
 		</p>
 		<p>
@@ -44,6 +44,10 @@
 		<p>
 			{{ Form::label('password', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password:&nbsp;') }}
 			{{ Form::password('password') }}
+		</p>
+		<p>
+			{{ Form::label('password_confirmation', 'Retype Password:&nbsp;') }}
+			{{ Form::password('password_confirmation') }}
 		</p>
 		<p>
 			{{ Form::label('admin', 'Request administrative access: ') }}
