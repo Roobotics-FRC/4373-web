@@ -6,6 +6,7 @@
 <style type="text/css">
 	#media-well {
 		height:90%;
+		width:90%;
 	}
 </style>
 @stop
