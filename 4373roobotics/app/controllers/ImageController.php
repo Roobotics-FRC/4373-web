@@ -29,7 +29,7 @@ class ImageController extends BaseController {
 	public function delete($id) {
 		try {
 			$user = Sentry::getUser();
-			if (Image::find($id)->user->id == $user->id) {
+			if (Image::find($id)->user->id == $user->id || $user->hasAccess('admin')) {
 				$image = Image::find($id);
 				unlink($image->file_path);
 				$image->delete();
