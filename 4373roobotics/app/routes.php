@@ -25,6 +25,7 @@ Route::get('/credits', function() {
 Route::get('/media/gallery', function() {
 	return View::make('mediagallery');
 });
+Route::get('/image/download/{id}', array('as'=>'downloadimage', 'uses'=>'ImageController@download'));
 Route::post('/user/login', 'UserController@doLogin');
 Route::get('/user/logout', 'UserController@logout');
 // Route::get('/makegroups', 'UserController@makeGroups');

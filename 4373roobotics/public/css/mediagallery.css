@@ -15,3 +15,8 @@
 	right: 0;
 	/*height: 800px;*/
 }
+
+.about a:link { color:black; }
+.about a:visited { color:black; }
+.about a:hover { color:blue; }
+.about a:active { color:blue; }
