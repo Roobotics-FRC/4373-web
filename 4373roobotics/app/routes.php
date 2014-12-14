@@ -22,11 +22,26 @@ Route::get('/secret/admin', function() {
 Route::get('/credits', function() {
 	return View::make('credits');
 });
-
-Route::post('/user/login', function() {
-	return "not implemented";
+Route::get('/media/gallery', function() {
+	return View::make('mediagallery');
 });
-
+Route::post('/user/login', 'UserController@doLogin');
+Route::get('/user/logout', 'UserController@logout');
+// Route::get('/makegroups', 'UserController@makeGroups');
+// Route::get('/makehenry', 'UserController@createHenry');
+Route::get('/account/delete/{id}', array('as'=>'deleteuser', 'before'=>'admin | csrf', 'uses' => 'UserController@delete'));
+Route::get('/account/toggleaccess/{id}', array('as'=>'toggleuseraccess', 'before'=>'admin | csrf', 'uses' => 'UserController@switchAccess'));
+Route::get('/user/signup', function() {
+	return View::make('register');
+});
+Route::post('/user/signup', array('as'=>'signup', 'before'=>'csrf | guest', 'uses'=>'UserController@requestAccount'));
 Route::get('/user/login', function() {
 	return View::make('login');
 });
+Route::get('/user/home', 'UserController@showHome');
+Route::get('/account/toggle/{id}', array('as'=>'toggle', 'before'=>'admin | csrf', 'uses' => 'UserController@toggleAccount'));
+Route::get('/date', function() {
+	return 'lol'.date('-d_m_y_g_i_s_a-').str_random(7);
+});
+Route::post('/image/upload', array('as'=>'upload', 'before'=>'auth | csrf', 'uses' => 'ImageController@upload'));
+Route::get('/image/delete/{id}', array('as'=>'delete', 'before'=>'auth | csrf', 'uses'=>'ImageController@delete'));

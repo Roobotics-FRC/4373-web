@@ -49,16 +49,23 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
+	if (!Sentry::check())
 	{
 		if (Request::ajax())
 		{
 			return Response::make('Unauthorized', 401);
 		}
-		return Redirect::guest('login');
+		return Redirect::guest('/user/login');
 	}
 });
 
+Route::filter('admin', function() {
+	if (Sentry::check()) {
+		if (!(Sentry::getUser()->hasAccess('admin'))) {
+			return Redirect::to('/');
+		}
+	}
+});
 
 Route::filter('auth.basic', function()
 {
@@ -78,7 +85,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Sentry::check()) return Redirect::to('/');
 });
 
 /*
@@ -96,6 +103,7 @@ Route::filter('csrf', function()
 {
 	if (Session::token() !== Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		return "CSRF Attack";
+		// throw new Illuminate\Session\TokenMismatchException;
 	}
 });
