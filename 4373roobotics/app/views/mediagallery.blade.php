@@ -6,7 +6,7 @@
 <style type="text/css">
 	#media-well {
 		height:80%;
-		width:auto;
+		width:80%;
 		display: block;
 	    margin-left: auto;
 	    margin-right: auto;
