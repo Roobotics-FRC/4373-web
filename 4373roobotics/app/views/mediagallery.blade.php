@@ -25,7 +25,7 @@
 <a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" id="media-well" /></a>
 <hr>
 <p>
-<a href="/image/download/{{{ $image->id }}}"><h4>Download {{{ explode(".", $image->name)[0] }}}</h4></a>
+<a href="/image/download/&quot;{{{ $image->id }}}&quot;"><h4>Download {{{ explode(".", $image->name)[0] }}}</h4></a>
 &nbsp;&nbsp;&nbsp;&nbsp;{{{ $image->description }}}
 </p>
 </div>

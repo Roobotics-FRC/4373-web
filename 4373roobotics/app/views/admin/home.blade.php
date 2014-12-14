@@ -70,7 +70,7 @@
 		</p>
 		<p>
 			{{ Form::label('description', 'Image description: ') }}
-			{{ Form::text('description', Input::old('description'), 
+			{{ Form::textarea('description', Input::old('description'), 
 				array('placeholder'=>'Yup yup yup')) }}
 		</p>
 		<p>
