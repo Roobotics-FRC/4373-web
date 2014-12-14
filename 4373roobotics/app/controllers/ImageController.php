@@ -43,4 +43,12 @@ class ImageController extends BaseController {
 		}
 		return Redirect::to('/user/home');
 	}
+	public function download($id) {
+		try {
+			return Response::download(Image::find($id)->file_path);
+		}
+		catch (Exception $e) {
+			return Redirect::to('/');
+		}
+	}
 }
