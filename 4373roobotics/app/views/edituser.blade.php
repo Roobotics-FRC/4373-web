@@ -25,6 +25,30 @@
 @section('content')
 <div id="mini-pane">
 @if (Sentry::check())
+	<h3>Change password:</h3>
+	{{ Form::open(array('methodd'=>'POST', 'url'=>'/account/' . Sentry::getUser()->id . '/changepassword')) }}
+		<p>
+			{{{ $errors->first('oldpassword') }}}
+			{{{ $errors->first('newpassword') }}}
+			{{{ $errors->first('confirmnewpassword') }}}
+		</p>
+		<p>
+			{{ Form::label('oldpassword', 'Current Password: ') }}
+			{{ Form::password('oldpassword') }}
+		</p>
+		<p>
+			{{ Form::label('newpassword', 'New Password: ') }}
+			{{ Form::password('newpassword') }}
+		</p>
+		<p>
+			{{ Form::label('newpassword_confirmation', 'Confirm New Password: ') }}
+			{{ Form::password('newpassword_confirmation') }}
+		</p>
+		<p>
+			{{ Form::submit('Change password') }}
+		</p>
+	{{ Form::close() }}
+	<h3>Edit Info:</h3>
 	@if (!Sentry::getUser()->hasAccess('admin'))
 		<h3>Update Name</h3>
 		{{ Form::open(array('method' => 'POST', 'url' => "/account/" . Sentry::getUser()->id . '/edit')) }}
@@ -63,29 +87,6 @@
 			<hr>
 		@endforeach
 	@endif
-	<h3>Change password:</h3>
-	{{ Form::open(array('methodd'=>'POST', 'url'=>'/account/' . Sentry::getUser()->id . '/changepassword')) }}
-		<p>
-			{{{ $errors->first('oldpassword') }}}
-			{{{ $errors->first('newpassword') }}}
-			{{{ $errors->first('confirmnewpassword') }}}
-		</p>
-		<p>
-			{{ Form::label('oldpassword', 'Current Password: ') }}
-			{{ Form::password('oldpassword') }}
-		</p>
-		<p>
-			{{ Form::label('newpassword', 'New Password: ') }}
-			{{ Form::password('newpassword') }}
-		</p>
-		<p>
-			{{ Form::label('newpassword_confirmation', 'Confirm New Password: ') }}
-			{{ Form::password('newpassword_confirmation') }}
-		</p>
-		<p>
-			{{ Form::submit('Change password') }}
-		</p>
-	{{ Form::close() }}
 @endif
 </div>
 @stop
