@@ -3,8 +3,8 @@
 <title>{{{ Sentry::getUser()->first_name }}}</title>
 <style type="text/css">
 	.img_preview {
-		width: 10%;
-		height: 10%;
+		width: 50px;
+		height: 50px;
 	}
 	#mini-pane {
 		padding-left: 10%;
