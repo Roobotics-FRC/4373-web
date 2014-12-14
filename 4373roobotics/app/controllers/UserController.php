@@ -165,7 +165,7 @@ class UserController extends BaseController {
 	public function switchAccess($id) {
 		$admin = Sentry::findGroupByName('administrators');
 		$reg = Sentry::findGroupByName('users');
-		// try {
+		try {
 			$user = User::find($id);
 
 			if ($user->hasAccess('admin')) {
@@ -176,10 +176,68 @@ class UserController extends BaseController {
 				$user->removeGroup($reg);
 				$user->addGroup($admin);
 			}
-		// }
-		// catch (Exception $e) {
-
-		// }
+		}
+		catch (Exception $e) {
+			// ignore it
+		}
 		return Redirect::to('/user/home');
+	}
+	public function updateName($id) {
+		$user = User::find($id);
+		if ($id == Sentry::getUser()->$id || Sentry::getUser()->hasAccess('admin')) {
+			$rules = array(
+				'first_name' => 'required|alphanum',
+				'last_name' => 'required|alphanum'
+				);
+			$validator = Validator::make(Input::all(), $rules);
+			if ($validator->passes()) {
+				$user->first_name = Input::get('first_name');
+				$user->last_name = Input::get('last_name');
+				$user->save();
+			}
+			else {
+				return Redirect::to('/user/settings')
+					->withInput()
+					->withErrors($validator);
+			}
+		}
+		else {
+			return "Only an admin can change another user's name ;)";
+		}
+		return Redirect::to('/user/settings');
+	}
+	public function changePassword($id) {
+		$user = User::find($id);
+		if ($id == Sentry::getUser()->id) {
+			$rules = array(
+				'oldpassword' => 'required',
+				'newpassword' => 'required|min:8',
+				'newpassword_confirmation' => 'required|same:newpassword'
+				);
+			$validator = Validator::make(Input::all(), $rules);
+			if ($validator->passes()) {
+				$credentials = array($user->email, Input::get('newpassword'));
+				if ($user->checkPassword(Input::get('oldpassword'))) {
+					$user->password = Input::get('newpassword');
+					$user->save();
+					return Redirect::to('/user/settings')
+						->withErrors(new MessageBag(array('oldpassword'=>'Password changed successfully')));
+				}
+				else {
+					return Redirect::to('/user/settings')
+						->withErrors(new MessageBag(array('oldpassword'=>'The password you supplied was incorrect')));
+				}
+			}
+			else {
+				return Redirect::to('/user/settings')
+					->withErrors($validator);
+			}
+		}
+		else {
+			return "You may not change another user's password.";
+		}
+	}
+	public function settings() {
+		return View::make('edituser');
 	}
 }

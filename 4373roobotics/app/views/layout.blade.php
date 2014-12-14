@@ -36,6 +36,11 @@
 						<a href="/user/login/">Login</a>
 					@endif
 				</li>
+				@if (Sentry::check())
+					<li>
+						<a href="/user/settings">Settings</a>
+					</li>
+				@endif
 				<li>
 					<a href="/">Schedule</a>
 				</li>
