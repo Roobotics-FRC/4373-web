@@ -103,7 +103,7 @@ Route::filter('csrf', function()
 {
 	if (Session::token() !== Input::get('_token'))
 	{
-		return "CSRF Attack";
+		return "Your browser does currently have cookies enabled for this site. \nYou will not be able to use most of it's functions.";
 		// throw new Illuminate\Session\TokenMismatchException;
 	}
 });
