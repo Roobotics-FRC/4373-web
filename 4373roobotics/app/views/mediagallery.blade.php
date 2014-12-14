@@ -5,8 +5,11 @@
 <title>Team 4373 - Media</title>
 <style type="text/css">
 	#media-well {
-		height:90%;
-		width:90%;
+		height:80%;
+		width:auto;
+		display: block;
+	    margin-left: auto;
+	    margin-right: auto;
 	}
 </style>
 @stop
