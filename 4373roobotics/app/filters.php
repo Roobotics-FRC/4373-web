@@ -62,7 +62,7 @@ Route::filter('auth', function()
 Route::filter('admin', function() {
 	if (Sentry::check()) {
 		if (!(Sentry::getUser()->hasAccess('admin'))) {
-			return Redirect::to('/');
+			return View::make('notfound');
 		}
 	}
 });
