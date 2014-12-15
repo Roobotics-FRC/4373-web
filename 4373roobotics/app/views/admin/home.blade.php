@@ -90,6 +90,7 @@
 				<th>Name</th>
 				<th>Desciption</th>
 				<th>Actions</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach (Sentry::getUser()->images as $image)
@@ -99,6 +100,7 @@
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
 						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+						<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
 					</tr>
 				@endforeach
 			</tbody>
@@ -115,6 +117,7 @@
 				<th>Name</th>
 				<th>Desciption</th>
 				<th>Actions</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach ( (Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()) as $image)
@@ -125,6 +128,7 @@
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
 						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+						<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
 					</tr>
 				@endforeach
 			</tbody>

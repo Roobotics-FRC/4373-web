@@ -38,6 +38,7 @@ Route::get('/user/logout', 'UserController@logout');
 // Route::get('/makegroups', 'UserController@makeGroups');
 // Route::get('/makehenry', 'UserController@createHenry');
 Route::get('/account/delete/{id}', array('as'=>'deleteuser', 'before'=>'admin | csrf', 'uses' => 'UserController@delete'));
+Route::get('/image/togglepublic/{id}', array('as'=>'publicimage', 'before'=>'admin | csrf', 'uses' => 'ImageController@togglePublic'));
 Route::get('/account/toggleaccess/{id}', array('as'=>'toggleuseraccess', 'before'=>'admin | csrf', 'uses' => 'UserController@switchAccess'));
 Route::get('/user/signup', function() {
 	return View::make('register');

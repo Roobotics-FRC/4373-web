@@ -51,6 +51,7 @@
 				<th>Name</th>
 				<th>Desciption</th>
 				<th>Actions</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach (Sentry::getUser()->images as $image)
@@ -60,6 +61,7 @@
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
 						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+						<td>{{{ $image->public == true ? "Yes" : "No" }}}</td>
 					</tr>
 				@endforeach
 			</tbody>
@@ -75,6 +77,7 @@
 				<th>Image</th>
 				<th>Name</th>
 				<th>Desciption</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach ( (Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()) as $image)
@@ -84,6 +87,7 @@
 						<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
+						<td>{{{ $image->public == true ? "Yes" : "No" }}}</td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -21,16 +21,18 @@
 <!-- <img src="{{ asset('images/header2.jpg') }}" style="width:100%;padding:0px;pading-left:0px;position:fixed;"> -->
 </div>
 @foreach (Image::orderBy('ID', 'DESC')->get() as $image)
-<div class="about">
-<a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" id="media-well" /></a>
-<hr>
-<p>
-<a href="/image/download/{{{ $image->id }}}"><h4>Download &quot;{{{ explode(".", $image->name)[0] }}}&quot;</h4></a>
-<h5><i>Submitted by {{{ $image->user->first_name . ' ' . $image->user->last_name }}} at {{{ $image->created_at }}}</i></h5>
-&nbsp;&nbsp;&nbsp;&nbsp;{{{ $image->description }}}
-</p>
-</div>
-<br><br><br><br><br>
+	@if (Sentry::check() || ($image->public == true))
+		<div class="about">
+			<a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" id="media-well" /></a>
+			<hr>
+			<p>
+			<a href="/image/download/{{{ $image->id }}}"><h4>Download &quot;{{{ explode(".", $image->name)[0] }}}&quot;</h4></a>
+			<h5><i>Submitted by {{{ $image->user->first_name . ' ' . $image->user->last_name }}} at {{{ $image->created_at }}}</i></h5>
+			&nbsp;&nbsp;&nbsp;&nbsp;{{{ $image->description }}}
+			</p>
+		</div>
+		<br><br><br><br><br>
+	@endif
 @endforeach
 
 @stop
