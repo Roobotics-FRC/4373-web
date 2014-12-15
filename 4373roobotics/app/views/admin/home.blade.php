@@ -46,9 +46,9 @@
 						<td>{{{ $user->last_name }}}</td>
 						<td>
 							@if ($user->hasAccess('admin'))
-								<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Demote</i></a>
+								Admin (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Demote</i></a>)
 							@else
-								<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Promote</i></a>
+								Regular (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Promote</i></a>)
 							@endif
 						</td>
 						<td>{{ $user->activated ? "<i>Enabled</i>" : "<b>Disabled</b>" }}</td>
