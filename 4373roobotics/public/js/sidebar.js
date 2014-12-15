@@ -1,4 +1,4 @@
-var toggled = true;
+var toggled = false;
 function toggleSideBar() {
 	$("#wrapper").toggleClass("toggled");
 	toggled = toggled ? false : true;
@@ -14,5 +14,6 @@ function registerEventHanglers() {
 	$("#sidebar-wrapper").mouseleave(toggleSideBar);
 }
 $(document).ready(function() {
+	$("#wrapper").toggleClass("toggled");
 	registerEventHanglers();
 });
