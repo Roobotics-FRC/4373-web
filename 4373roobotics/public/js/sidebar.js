@@ -13,6 +13,6 @@ function registerEventHanglers() {
 	};
 	$("#sidebar-wrapper").mouseleave(toggleSideBar);
 }
-	$(document).ready(function() {
-		registerEventHanglers();
-	});
+$(document).ready(function() {
+	registerEventHanglers();
+});
