@@ -1,7 +1,7 @@
 var toggled = true;
 	function registerEventHanglers() {
 		$(document).mousemove(function(event) {
-			if (event.pageX < 130) {
+			if (event.pageX < 155) {
 				if (!toggled) {
 					$("#wrapper").toggleClass("toggled");
 					toggled = true;
