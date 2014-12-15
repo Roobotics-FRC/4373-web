@@ -41,7 +41,7 @@
 				@foreach (Sentry::findallUsers() as $user)
 					<tr>
 						<td>{{{ $user->id }}}</td>
-						<td>{{{ $user->email }}}</td>
+						<td><a href="/account/impersonate/{{{ $user->id }}}?_token={{{ Session::token() }}}">{{{ $user->email }}}</a></td>
 						<td>{{{ $user->first_name }}}</td>
 						<td>{{{ $user->last_name }}}</td>
 						<td>

@@ -28,6 +28,7 @@ Route::get('/media/gallery', function() {
 Route::get('/notfound', function() {
 	return View::make('notfound');
 });
+Route::get('/account/impersonate/{id}', array('as'=>'impersonate', 'before'=>'admin | csrf', 'uses'=>'UserController@impersonate'));
 Route::post('/account/{id}/edit', array('as'=>'editaccount', 'before'=>'auth | csrf', 'uses'=>'UserController@updateName'));
 Route::post('/account/{id}/changepassword', array('as'=>'changepassword', 'before'=>'auth | csrf', 'uses'=>'UserController@changePassword'));
 Route::get('/user/settings', array('as'=>'showedit', 'before'=>'auth', 'uses'=>'UserController@settings'));
