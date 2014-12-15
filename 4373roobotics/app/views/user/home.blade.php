@@ -25,6 +25,7 @@
 @section('content')
 <div id="mini-pane">
 	<h3>Add Images to Media Gallary</h3>
+	<h5>Please note that images you upload will only be visible to logged in users until they are marked as public by an admin.</h5>
 	{{ Form::open(array('method' => 'POST', 'url' => '/image/upload', 'files'=>true)) }}
 		<p>
 			{{{ $errors->first('image') }}}
@@ -51,6 +52,7 @@
 				<th>Name</th>
 				<th>Desciption</th>
 				<th>Actions</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach (Sentry::getUser()->images as $image)
@@ -60,6 +62,7 @@
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
 						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+						<td>{{{ $image->public == true ? "Yes" : "No" }}}</td>
 					</tr>
 				@endforeach
 			</tbody>
@@ -75,6 +78,7 @@
 				<th>Image</th>
 				<th>Name</th>
 				<th>Desciption</th>
+				<th>Public</th>
 			</thead>
 			<tbody>
 				@foreach ( (Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()) as $image)
@@ -84,6 +88,7 @@
 						<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
 						<td>{{{ $image->name }}}</td>
 						<td>{{{ $image->description }}}</td>
+						<td>{{{ $image->public == true ? "Yes" : "No" }}}</td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -15,6 +15,7 @@ class ImageController extends BaseController {
 					$image->description = Input::get('description');
 					$image->file_path = $upload_path . '/' . $filename;
 					$image->name = $file->getClientOriginalName();
+					$image->public = Sentry::getUser()->hasAccess('admin') ? true : false;
 					Sentry::getUser()->images()->save($image);
 					return Redirect::to('/user/home');
 				}
@@ -42,6 +43,23 @@ class ImageController extends BaseController {
 
 		}
 		return Redirect::to('/user/home');
+	}
+	public function togglePublic($id) {
+		try {
+			$image = Image::find($id);
+			$user = Sentry::getUser();
+			if ($user->hasAccess('admin')) {
+				$image->public = $image->public ? false : true;
+				$image->save();
+				return Redirect::to('/user/home');
+			}
+			else {
+				return "Very nice try.";
+			}
+		}
+		catch (Exception $e) {
+			dd($e);
+		}
 	}
 	public function download($id) {
 		try {
