@@ -198,7 +198,6 @@ class UserController extends BaseController {
 			}
 			else {
 				return Redirect::to('/user/settings')
-					->withInput()
 					->withErrors($validator);
 			}
 		}
