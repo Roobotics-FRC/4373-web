@@ -190,6 +190,12 @@ class UserController extends BaseController {
 				'first_name' => 'required|alphanum',
 				'last_name' => 'required|alphanum'
 				);
+			if (Sentry::getUser()->hasAccess('admin')) {
+				$rules = array(
+				'first_name' => 'required',
+				'last_name' => 'required'
+				);
+			}
 			$validator = Validator::make(Input::all(), $rules);
 			if ($validator->passes()) {
 				$user->first_name = Input::get('first_name');
