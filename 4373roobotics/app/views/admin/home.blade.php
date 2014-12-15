@@ -6,6 +6,9 @@
 		width: 50px;
 		height: 50px;
 	}
+	#users-list {
+		/*width:90%;*/
+	}
 	#mini-pane {
 		padding-left: 10%;
 		padding-right: 3%;
@@ -13,7 +16,7 @@
 		text-align: left;
 		padding-top: 1%;
 		outline: 1px solid #808080;
-		width: 85%;
+		width: 100%;
 		height: 40%;
 	}
 	#mini-pane a:link { color:#000; }
@@ -25,7 +28,7 @@
 @section('content')
 <div id="mini-pane">
 	<h3>Suspend/Approve user accounts</h3>
-	<div class="table-responsive">
+	<div class="table-responsive" id="users-list">
 		<table class="table table-striped table-bordered">
 			<thead>
 				<th>ID</th>
