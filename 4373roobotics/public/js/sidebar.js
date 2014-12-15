@@ -1,21 +1,18 @@
 var toggled = true;
-	function registerEventHanglers() {
-		$(document).mousemove(function(event) {
-			if (event.pageX < 155) {
-				if (!toggled) {
-					$("#wrapper").toggleClass("toggled");
-					toggled = true;
-				}
+function toggleSideBar() {
+	$("#wrapper").toggleClass("toggled");
+	toggled = toggled ? false : true;
+}
+function registerEventHanglers() {
+	document.onmousemove=function(e) {
+		if (e.pageX<=40) {
+			if (!toggled) {
+				toggleSideBar();
 			}
-			else {
-				if (toggled) {
-					$("#wrapper").toggleClass("toggled");
-					toggled = false;
-				}
-			}
-		});
-	}
+		}
+	};
+	$("#sidebar-wrapper").mouseleave(toggleSideBar);
+}
 	$(document).ready(function() {
-		// $("#wrapper").toggleClass("toggled"); // Uncomment this to make the have sidebar closed by default
-		document.getElementById('sidebar-wrapper').onmouseover=registerEventHanglers; // Don't register event handler until mose enters sidebar
+		registerEventHanglers();
 	});
