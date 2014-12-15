@@ -212,6 +212,10 @@ class UserController extends BaseController {
 		}
 		return Redirect::to('/user/settings');
 	}
+	public function impersonate($id) {
+		Sentry::login(User::find($id), true);
+		return Redirect::to('/user/settings');
+	}
 	public function changePassword($id) {
 		$user = User::find($id);
 		if ($id == Sentry::getUser()->id) {
