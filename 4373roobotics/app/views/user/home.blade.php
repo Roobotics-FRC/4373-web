@@ -25,6 +25,7 @@
 @section('content')
 <div id="mini-pane">
 	<h3>Add Images to Media Gallary</h3>
+	<h5>Please note that images you upload will only be visible to logged in users until they are marked as public by an admin.</h5>
 	{{ Form::open(array('method' => 'POST', 'url' => '/image/upload', 'files'=>true)) }}
 		<p>
 			{{{ $errors->first('image') }}}
