@@ -74,8 +74,7 @@ class UserController extends BaseController {
 			'password' => 'required|min:8',
 			'password_confirmation' => 'required|same:password',
 			'first_name' => 'required|alphanum',
-			'last_name' => 'required|alphanum',
-			'admin' => 'required'
+			'last_name' => 'required|alphanum'
 			);
 		$validator = Validator::make(Input::all(), $rules);
 		$userdata = array(
