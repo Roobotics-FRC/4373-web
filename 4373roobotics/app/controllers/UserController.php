@@ -187,8 +187,8 @@ class UserController extends BaseController {
 		$user = User::find($id);
 		if ($id == Sentry::getUser()->$id || Sentry::getUser()->hasAccess('admin')) {
 			$rules = array(
-				'first_name' => 'required|alphanum',
-				'last_name' => 'required|alphanum'
+				'first_name' => 'required',
+				'last_name' => 'required'
 				);
 			$validator = Validator::make(Input::all(), $rules);
 			if ($validator->passes()) {
