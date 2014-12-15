@@ -29,6 +29,7 @@
 			<a href="/image/download/{{{ $image->id }}}"><h4>Download &quot;{{{ explode(".", $image->name)[0] }}}&quot;</h4></a>
 			<h5><i>Submitted by {{{ $image->user->first_name . ' ' . $image->user->last_name }}} at {{{ $image->created_at }}}</i></h5>
 			&nbsp;&nbsp;&nbsp;&nbsp;{{{ $image->description }}}
+			{{ $image->public != true ? Sentry::getUser()->hasAccess('admin') ? "<br><br><i>This image is not currenly public. <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Change that)</a></i>" : "<br><br><i>This image is not currenly public.</i>" : "" }}
 			</p>
 		</div>
 		<br><br><br><br><br>
