@@ -1,6 +1,5 @@
-var toggled = false;
-	$("#wrapper").toggleClass("toggled");
-	$(document).ready(function() {
+var toggled = true;
+	function registerEventHanglers() {
 		$(document).mousemove(function(event) {
 			if (event.pageX < 130) {
 				if (!toggled) {
@@ -15,4 +14,8 @@ var toggled = false;
 				}
 			}
 		});
+	}
+	$(document).ready(function() {
+		// $("#wrapper").toggleClass("toggled"); // Uncomment this to make the have sidebar closed by default
+		document.getElementById('sidebar-wrapper').onmouseover=registerEventHanglers; // Don't register event handler until mose enters sidebar
 	});
