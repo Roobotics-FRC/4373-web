@@ -1,8 +1,11 @@
 @extends('layout')
 
 @section('head')
-<link rel="stylesheet" href="{{ asset('css/home.css') }}">
-<title>Team 4373</title>
+<meta name="keywords" content="4373, abington friends, afs, robotics, frc, first" />
+<meta name="description" content="The website of FRC Team 4373" />
+<meta name="DC.title" content="FRC team 4373" />
+<link rel="stylesheet" href="{{ asset('css/home.css') }}" />
+<title>FRC Team 4373</title>
 @stop
 
 @section('content')

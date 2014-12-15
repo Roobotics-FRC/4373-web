@@ -49,8 +49,6 @@ Route::get('/user/login', function() {
 });
 Route::get('/user/home', 'UserController@showHome');
 Route::get('/account/toggle/{id}', array('as'=>'toggle', 'before'=>'admin | csrf', 'uses' => 'UserController@toggleAccount'));
-Route::get('/date', function() {
-	return 'lol'.date('-d_m_y_g_i_s_a-').str_random(7);
-});
+
 Route::post('/image/upload', array('as'=>'upload', 'before'=>'auth | csrf', 'uses' => 'ImageController@upload'));
 Route::get('/image/delete/{id}', array('as'=>'delete', 'before'=>'auth | csrf', 'uses'=>'ImageController@delete'));

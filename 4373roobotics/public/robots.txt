@@ -1,2 +1,7 @@
 User-agent: *
 Disallow: /secret/admin
+Disallow: /credits
+Disallow: /account
+Disallow: /user
+Disallow: /image
+Disallow: /images
