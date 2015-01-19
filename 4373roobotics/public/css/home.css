@@ -9,9 +9,11 @@
 .about {
 	position: relative;
 	padding: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
 	background-color: #fff;
 	top: 70px;
 	width: 100%;
 	right: 0;
-	height: 400px;
+	height: 400px auto;
 }
