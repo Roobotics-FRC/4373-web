@@ -14,6 +14,8 @@ function registerEventHanglers() {
 	$("#sidebar-wrapper").mouseleave(toggleSideBar);
 }
 $(document).ready(function() {
-	//$("#wrapper").toggleClass("toggled");
+	if (navigator.userAgent.toLowerCase().indexOf('iphone')>-1 || navigator.userAgent.toLowerCase().indexOf('ipod')>-1 || navigator.userAgent.toLowerCase().indexOf('ipad')>-1 || navigator.userAgent.toLowerCase().indexOf('droid')>-1) {
+		//$("#wrapper").toggleClass("toggled");
+	}
 	registerEventHanglers();
 });

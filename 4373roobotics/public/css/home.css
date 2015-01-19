@@ -12,10 +12,14 @@
 	padding-left: 10%;
 	padding-right: 10%;
 	background-color: #fff;
-	top: 70px;
-	width: 100%;
+	top: 0px;
+	width: 98% auto;
 	right: 0;
 	height: 400px auto;
+}
+#wrapper.toggled .about {
+	left: 2%;
+	width:96%;
 }
 .bodytext {
 	text-indent:8%;
