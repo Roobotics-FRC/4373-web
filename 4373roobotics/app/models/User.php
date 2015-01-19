@@ -17,7 +17,7 @@ class User extends SentryModel {
 	}
 
 	public function events() {
-		return this->belongsToMany('Event');
+		return $this->belongsToMany('Event');
 	}
 
 }
