@@ -41,24 +41,26 @@
 				<th>Delete</th>
 			</thead>
 			<tbody>
-				@foreach (Sentry::findallUsers() as $user)
-					<tr>
-						<td>{{{ $user->id }}}</td>
-						<td><a href="/account/impersonate/{{{ $user->id }}}?_token={{{ Session::token() }}}">{{{ $user->email }}}</a></td>
-						<td>{{{ $user->first_name }}}</td>
-						<td>{{{ $user->last_name }}}</td>
-						<td>
-							@if ($user->hasAccess('admin'))
-								Admin (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Demote</i></a>)
-							@else
-								Regular (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Promote</i></a>)
-							@endif
-						</td>
-						<td>{{ $user->activated ? "<i>Enabled</i>" : "<b>Disabled</b>" }}</td>
-						<td><a href='/account/toggle/{{{ $user->id }}}?_token={{{ Session::token() }}}'>{{ $user->activated ? "<b>Suspend</b>" : "<i>Enable</i>" }}</a></td>
-						<td><a href='/account/delete/{{{ $user->id }}}?_token={{{ Session::token() }}}'><b><i>Delete Account</i></b></a></td>
-					</tr>
-				@endforeach
+				@if(is_array(Sentry::findallUsers()))
+					@foreach (Sentry::findallUsers() as $user)
+						<tr>
+							<td>{{{ $user->id }}}</td>
+							<td><a href="/account/impersonate/{{{ $user->id }}}?_token={{{ Session::token() }}}">{{{ $user->email }}}</a></td>
+							<td>{{{ $user->first_name }}}</td>
+							<td>{{{ $user->last_name }}}</td>
+							<td>
+								@if ($user->hasAccess('admin'))
+									Admin (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Demote</i></a>)
+								@else
+									Regular (<a href="/account/toggleaccess/{{{ $user->id }}}?_token={{{ Session::token() }}}" ><i>Promote</i></a>)
+								@endif
+							</td>
+							<td>{{ $user->activated ? "<i>Enabled</i>" : "<b>Disabled</b>" }}</td>
+							<td><a href='/account/toggle/{{{ $user->id }}}?_token={{{ Session::token() }}}'>{{ $user->activated ? "<b>Suspend</b>" : "<i>Enable</i>" }}</a></td>
+							<td><a href='/account/delete/{{{ $user->id }}}?_token={{{ Session::token() }}}'><b><i>Delete Account</i></b></a></td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
@@ -93,16 +95,18 @@
 				<th>Public</th>
 			</thead>
 			<tbody>
+				@if (is_array(Sentry::getUser()->images))
 				@foreach (Sentry::getUser()->images as $image)
-					<tr>
-						<td>{{{ $image->id }}}</td>
-						<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
-						<td>{{{ $image->name }}}</td>
-						<td>{{{ $image->description }}}</td>
-						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
-						<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
-					</tr>
-				@endforeach
+						<tr>
+							<td>{{{ $image->id }}}</td>
+							<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
+							<td>{{{ $image->name }}}</td>
+							<td>{{{ $image->description }}}</td>
+							<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+							<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
@@ -120,17 +124,19 @@
 				<th>Public</th>
 			</thead>
 			<tbody>
-				@foreach ( (Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()) as $image)
-					<tr>
-						<td>{{{ $image->user->first_name }}}</td>
-						<td>{{{ $image->id }}}</td>
-						<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
-						<td>{{{ $image->name }}}</td>
-						<td>{{{ $image->description }}}</td>
-						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
-						<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
-					</tr>
-				@endforeach
+				@if (is_array(Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()))
+					@foreach ( (Image::whereNotIn( 'user_id', array(Sentry::getUser()->id) )->get()) as $image)
+						<tr>
+							<td>{{{ $image->user->first_name }}}</td>
+							<td>{{{ $image->id }}}</td>
+							<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
+							<td>{{{ $image->name }}}</td>
+							<td>{{{ $image->description }}}</td>
+							<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+							<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
@@ -148,17 +154,19 @@
 				<th>Public</th>
 			</thead>
 			<tbody>
-				@foreach ( (Image::whereNotIn( 'public', array(true) )->get()) as $image)
-					<tr>
-						<td>{{{ $image->user->first_name }}}</td>
-						<td>{{{ $image->id }}}</td>
-						<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
-						<td>{{{ $image->name }}}</td>
-						<td>{{{ $image->description }}}</td>
-						<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
-						<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
-					</tr>
-				@endforeach
+				@if (is_array(Image::whereNotIn( 'public', array(true) )->get()))
+					@foreach ( (Image::whereNotIn( 'public', array(true) )->get()) as $image)
+						<tr>
+							<td>{{{ $image->user->first_name }}}</td>
+							<td>{{{ $image->id }}}</td>
+							<td><a href="{{{ asset($image->file_path) }}}"><img src="{{{ asset($image->file_path) }}}" alt="{{{ $image->name }}}" class="img_preview" /></a></td>
+							<td>{{{ $image->name }}}</td>
+							<td>{{{ $image->description }}}</td>
+							<td><a href="/image/delete/{{{ $image->id }}}?_token={{{ Session::token() }}}">Delete</a></td>
+							<td>{{ $image->public == true ? "Yes <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Hide)</a>" : "No <a href=\"/image/togglepublic/$image->id?_token=" . Session::token() . "\">(Show)</a>" }}</td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
