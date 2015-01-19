@@ -50,7 +50,7 @@
 <img src="http://stackexchange.com/users/flair/2938721.png" width="208" height="58" alt="profile for 735Tesla on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for 735Tesla on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
 <hr>
 </div>
-
+</style>
 
 @stop
 @stop

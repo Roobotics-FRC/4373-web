@@ -24,7 +24,7 @@ class AddTimestampsToImages extends Migration {
 	 */
 	public function down()
 	{
-		Schmea::table('images', function($table) {
+		Schema::table('images', function($table) {
 			$table->dropColumn('created_at');
 			$table->dropColumn('updated_at');
 		});

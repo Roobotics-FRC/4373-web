@@ -25,7 +25,7 @@ class AddUserIdToImages extends Migration {
 	public function down()
 	{
 		Schema::table('images', function($table) {
-			$table->drop_column('user_id');
+			$table->dropColumn('user_id');
 		});
 	}
 

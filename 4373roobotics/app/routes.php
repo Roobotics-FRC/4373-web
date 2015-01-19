@@ -52,3 +52,4 @@ Route::get('/account/toggle/{id}', array('as'=>'toggle', 'before'=>'admin | csrf
 
 Route::post('/image/upload', array('as'=>'upload', 'before'=>'auth | csrf', 'uses' => 'ImageController@upload'));
 Route::get('/image/delete/{id}', array('as'=>'delete', 'before'=>'auth | csrf', 'uses'=>'ImageController@delete'));
+

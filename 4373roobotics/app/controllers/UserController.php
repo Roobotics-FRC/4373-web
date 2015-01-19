@@ -145,7 +145,7 @@ class UserController extends BaseController {
 	public function createHenry() {
 		$user = Sentry::register(array(
 			'email' => '17henryp@abingtonfriends.net',
-			'password' => 'nsr10ojif',
+			'password' => 'lalalalala',
 			'first_name' => 'Henry',
 			'last_name' => 'Pitcairn',
 			'activated' => true,

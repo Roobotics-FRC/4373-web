@@ -16,4 +16,8 @@ class User extends SentryModel {
 		return $this->hashMany('Textclipping');
 	}
 
+	public function events() {
+		return this->belongsToMany('Event');
+	}
+
 }
