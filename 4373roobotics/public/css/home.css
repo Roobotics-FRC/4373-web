@@ -17,3 +17,10 @@
 	right: 0;
 	height: 400px auto;
 }
+.bodytext {
+	text-indent:8%;
+}
+.about a:link { color:grey; }
+.about a:visited { color:grey; }
+.about a:hover { color:black;text-decoration:none; }
+.about a:active { color:blue; }
